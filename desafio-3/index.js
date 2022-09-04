@@ -8,35 +8,30 @@ const PORT = process.env.PORT || 8080;
 let container = new modulo.Contenedor("productos.json");
 
 //app.get (metodo para asignar mediante express la respuesta get al usuario, parametro de ruta y callback)
+//primer parametro (ruta a escuchar), segundo parametro (Puede recibir el async), luego recibe el callback.
 //En este caso se hace con la function async await epserando el resultado del metodo getAll(nos devuelve un objeto)
-app.get("/productos", (req, res) => {
-  let productos = async () => {
-    try {
-      const data = await container.getAll().then((res) => JSON.stringify(res));
-      res.send(`<h1>Lista de productos:</h1>\n ${data}`);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  productos();
+app.get("/productos", async (req, res) => {
+  try {
+    const data = await container.getAll().then((res) => JSON.stringify(res));
+    res.send(`<h1>Lista de productos:</h1>\n ${data}`);
+  } catch (err) {
+    console.log(err);
+  }
 });
 
-app.get("/productoRandom", (req, res) => {
-  let productRandom = async () => {
-    try {
-      const data = await container.getAll().then((res) => res);
-      const numberMax = data.length;
-      let numberRandom = Math.floor(Math.random() * numberMax + 1);
-      res.send(
-        `<h1>El producto elegido es el numero (${numberRandom})</h1>\n ${JSON.stringify(
-          await container.getById(numberRandom)
-        )}`
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  productRandom();
+app.get("/productoRandom", async (req, res) => {
+  try {
+    const data = await container.getAll();
+    const numberMax = data.length;
+    let numberRandom = Math.floor(Math.random() * numberMax + 1);
+    res.send(
+      `<h1>El producto elegido es el numero (${numberRandom})</h1>\n ${JSON.stringify(
+        await container.getById(numberRandom)
+      )}`
+    );
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //Esta ruta (*), se asigna a todas las rutas que no tenemos definidas.
