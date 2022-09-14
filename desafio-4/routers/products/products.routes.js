@@ -51,7 +51,7 @@ route.post("/", (req, res) => {
   res.json({
     status: "successfull",
     result: newProduct,
-    "new Products": products,
+    "new Products": products.products,
   });
   //Verificamos nuestro array de objeto con el nuevo producto.
   //console.log(products);

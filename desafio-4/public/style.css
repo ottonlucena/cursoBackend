@@ -1,11 +1,10 @@
 * {
-  font-family: cursive;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
 }
 
-.centrar {
-  display: grid;
-  place-content: center;
+body {
+  background-color: black;
 }
 
 .container {
@@ -13,27 +12,33 @@
   place-content: center;
   width: 100%;
   height: 100vh;
-  background-color: rgba(151, 196, 255, 0.384);
+  background-color: rgba(130, 134, 139, 0.384);
 }
 
-body {
-  background-color: black;
-}
 form {
-  border-width: 1.5px;
-  border-style: solid;
-  border-color: black;
-  background-color: bisque;
+  background-color: rgba(216, 214, 211, 0.685);
+  padding: 2rem;
 }
-form button {
-  justify-content: flex-end;
-}
+
 form p {
-  margin: 20px;
+  font-weight: 700;
 }
+
 form input {
-  margin: 20px;
+  margin: 1rem;
   display: flex;
-  flex-direction: column;
   align-content: center;
+  width: 80%;
+  height: 2rem;
+}
+
+form button {
+  font-size: 1rem;
+  color: brown;
+  font-weight: 800;
+  display: flex;
+  margin: 1rem auto;
+  width: 6rem;
+  height: 2rem;
+  justify-content: center;
 }
