@@ -22,4 +22,26 @@ const products = [
   },
 ];
 
-module.exports.products = products;
+class Products {
+  constructor() {
+    this.products = products;
+  }
+
+  async getAll() {
+    return this.products;
+  }
+
+  async getById(number) {
+    return this.products.find((product) => product.id === number);
+  }
+
+  async getFindIndex(id) {
+    return this.products.findIndex((product) => product.id === Number(id));
+  }
+
+  async deleteProduct(id) {
+    return this.products.filter((product) => product != id);
+  }
+}
+
+module.exports = Products;

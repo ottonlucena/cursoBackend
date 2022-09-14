@@ -1,0 +1,39 @@
+* {
+  font-family: cursive;
+  box-sizing: border-box;
+}
+
+.centrar {
+  display: grid;
+  place-content: center;
+}
+
+.container {
+  display: grid;
+  place-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(151, 196, 255, 0.384);
+}
+
+body {
+  background-color: black;
+}
+form {
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: black;
+  background-color: bisque;
+}
+form button {
+  justify-content: flex-end;
+}
+form p {
+  margin: 20px;
+}
+form input {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
