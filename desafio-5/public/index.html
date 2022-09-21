@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Desafio 5</title>
+  </head>
+  <body>
+    <main>
+      <h1>Formulario de Productos</h1>
+      <section>
+        <form action="/productos" method="post">
+          <h2>Ingrese su nuevo Producto.</h2>
+          <label for="titulo">Ingrese nombre del producto</label>
+          <input
+            type="text"
+            id="titulo"
+            name="title"
+            placeholder="Ingrese nombre del producto"
+          />
+          <label for="precio">Precio del producto</label>
+          <input
+            type="number"
+            id="precio"
+            name="price"
+            placeholder="Ingrese precio del producto"
+          />
+          <label for="imagen">URL del producto</label>
+          <input
+            type="text"
+            id="imagen"
+            name="thumbnail"
+            placeholder="Ingrese URL del producto"
+          />
+          <button type="submit">Enviar</button>
+          <button type="reset">Reset</button>
+        </form>
+        <button class="btnProduct">
+          <a href="/productos">Mostrar productos</a>
+        </button>
+      </section>
+    </main>
+  </body>
+</html>

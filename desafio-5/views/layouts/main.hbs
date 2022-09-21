@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="style.css" />
+
+<h1 class="table">Productos Cargados</h1>
+
+{{#if mostrarProductos}}
+    <div>
+        <table >
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Foto</th>
+            </tr>
+    {{#each products}}
+            <tr>
+                <td>{{this.title}}</td>
+                <td>{{this.price}}</td>
+                <td><img src={{this.thumbnail}} alt={{this.id}}></td>
+            </tr>
+    {{/each}}
+        </table>
+    </div>
+    <button class="btnVolver"><a href="/">Volver</a></button>
+    {{else}}
+{{> partial}}
+{{/if}}
+

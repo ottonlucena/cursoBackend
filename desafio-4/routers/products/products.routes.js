@@ -38,20 +38,20 @@ route.post("/", (req, res) => {
     });
   }
   //creamos la constante de nuestro nuevo producto y le asignamos un nuevo ID recorriendo nuestro objeto +1.
+  const { items } = products;
   const newProduct = {
-    id: products.products.length + 1,
+    id: items.length + 1,
     title,
     price,
     thumbnail,
   };
-
   //Agregamos nuestro nuevo producto (newProduct) con el metodo push a nuestro objeto products.
-  products.products.push(newProduct);
+  items.push(newProduct);
   //Le enviamos como respuesta el producto agregado.
   res.json({
     status: "successfull",
     result: newProduct,
-    "new Products": products.products,
+    "new Products": items,
   });
   //Verificamos nuestro array de objeto con el nuevo producto.
   //console.log(products);

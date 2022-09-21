@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="style.css")
+        title Desafio 5 - PUG
+    body 
+        main 
+            h1 Productos Cargados 
+            if mostrarProductos
+                div 
+                    table 
+                        tr 
+                            th Nombre 
+                            th Precio 
+                            th Foto 
+                        each item in products
+                            tr 
+                                td=`${item.title}` 
+                                td=`${item.price}` 
+                                td 
+                                    img(src=`${item.thumbnail}`, alt=`${item.id}`) 
+                button(class='btnVolver')
+                    a(href="/") Volver 
+            else
+                h3 No tiene productos cargados.
+                    div(class='backProct')
+                        a(href="/") Volver 

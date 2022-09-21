@@ -1,5 +1,5 @@
 const products = [
-  {
+  /*  {
     id: 1,
     title: "Manzana",
     price: 123.44,
@@ -19,12 +19,27 @@ const products = [
     price: 33.98,
     thumbnail:
       "https://wikidat.com/img/cambur-ff289f22159dbaeea6e8c88f3a4c94e5.jpg",
-  },
+  }, */
 ];
 
 class Products {
   constructor() {
     this.items = products;
+  }
+
+  async save(product) {
+    const { title, price, thumbnail } = product;
+    if (!title || !price || !thumbnail) {
+      return null;
+    }
+    const newProduct = {
+      id: this.items.length + 1,
+      title,
+      price,
+      thumbnail,
+    };
+    this.items.push(newProduct);
+    return this.items;
   }
 
   async getAll() {
@@ -41,6 +56,10 @@ class Products {
 
   async deleteProduct(id) {
     return this.items.filter((product) => product != id);
+  }
+
+  async deleteProductAll() {
+    return [];
   }
 }
 
