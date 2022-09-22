@@ -29,8 +29,12 @@ app.use(express.static("public"));
 app.set("view engine", "hbs"); //metodo y motor de plantilla */
 
 //metodo set para los motores de PUG
+/* app.set("views", "./views");
+app.set("view engine", "pug"); */
+
+//metodo ser para motores EJS
 app.set("views", "./views");
-app.set("view engine", "pug");
+app.set("view engine", "ejs");
 
 app.post("/productos", (req, res) => {
   const data = req.body;

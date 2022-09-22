@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Desafio 5 - EJS</title>
+  </head>
+  <body>
+    <h1>Productos Cargados</h1>
+    <% if (mostrarProductos) { %>
+    <div>
+      <table>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Foto</th>
+        </tr>
+        <% products.forEach(item => { %>
+        <tr>
+          <td><%= item.title %></td>
+          <td><%= item.price %></td>
+          <td><img src="<%= item.thumbnail %>" alt="image" /></td>
+          <% }) %>
+        </tr>
+      </table>
+      <button class="btnVolver"><a href="/">Volver</a></button>
+    </div>
+    <%} else { %> <%- include('./partials/partial.ejs') %> <% } %>
+  </body>
+</html>
