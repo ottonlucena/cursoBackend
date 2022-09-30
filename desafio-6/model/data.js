@@ -1,3 +1,4 @@
+const fs = require("fs");
 const products = [];
 
 class Products {
