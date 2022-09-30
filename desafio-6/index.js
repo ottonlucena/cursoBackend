@@ -64,7 +64,7 @@ const users = [];
 
 //Socket
 io.on("connection", (socket) => {
-  console.log(`Nuevo usuario conectado!`);
+  //console.log(`Nuevo usuario conectado!`);
 
   io.emit("items", [...items]);
 
