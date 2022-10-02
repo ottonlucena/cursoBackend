@@ -2,6 +2,8 @@ const express = require("express");
 const { engine } = require("express-handlebars");
 const path = require("path");
 const Products = require("./model/data");
+const { formatMessage } = require("./utils/utils");
+const fs = require("fs");
 
 //Instanciamos nuestro servidor con socket
 const { Server: HttpServer } = require("http");
@@ -15,8 +17,9 @@ const io = new SocketServer(httpServer);
 //Instanciamos nuestra data
 const products = new Products();
 const { items } = products;
+const { data } = products;
 
-//Midllewares
+//Midllewaress
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
@@ -48,27 +51,59 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
   const data = req.body;
   const { title, price, thumbnail } = req.body;
-  if (title || price || thumbnail) {
-    products.save(data);
-    res.redirect("/");
+  if (!title || !price || !thumbnail) {
+    return;
   }
+  products.save(data);
+  res.redirect("/");
 });
 
 app.get("*", (req, res) => {
   res.status(404).send(`<h1>Path not found</h1>`);
 });
 
-//Variable
+//Variables
 const messages = [];
 const users = [];
 
-//Socket
+//Método io() con sus parámetros
 io.on("connection", (socket) => {
-  //console.log(`Nuevo usuario conectado!`);
+  console.log(`Nuevo usuario conectado!`);
 
   io.emit("items", [...items]);
 
-  io.emit("chat-message", [...messages]);
+  io.emit("message", [...messages]);
+
+  socket.on("new-user", (email) => {
+    const newUser = {
+      id: socket.id,
+      email: email,
+    };
+    users.push(newUser);
+  });
+
+  socket.on("new-message", async (msg) => {
+    const user = users.find((user) => user.id === socket.id);
+    const newMessage = formatMessage(socket.id, user.email, msg);
+    messages.push(newMessage);
+    products.saveMessage(user.email, msg, newMessage.time);
+    //Creamos un documento txt donde almacenamos todos los mensajes enviados.
+    /* fs.appendFile("conversacion.txt", JSON.stringify(data), (err) => {
+      if (err) {
+        throw err;
+      }
+      console.log(`Archive create sucessfull`);
+    }); */
+
+    io.emit("chat-message", newMessage);
+  });
+
+  const id = socket.id;
+  console.log(id);
+  socket.on("disconnect", () => {
+    io.emit("disc", `${id}`);
+    console.log(`disconect ${id}`);
+  });
 });
 
 //Conexión del Servidor

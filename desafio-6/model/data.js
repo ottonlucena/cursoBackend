@@ -1,9 +1,11 @@
 const fs = require("fs");
 const products = [];
+const msg = [];
 
 class Products {
   constructor() {
     this.items = products;
+    this.data = msg;
   }
 
   async save(product) {
@@ -21,24 +23,14 @@ class Products {
     return this.items;
   }
 
-  async getAll() {
-    return this.items;
-  }
-
-  async getById(number) {
-    return this.items.find((product) => product.id === number);
-  }
-
-  async getFindIndex(id) {
-    return this.items.findIndex((product) => product.id === Number(id));
-  }
-
-  async deleteProduct(id) {
-    return this.items.filter((product) => product != id);
-  }
-
-  async deleteProductAll() {
-    return [];
+  async saveMessage(email, text, time) {
+    const user = {
+      email,
+      text,
+      time,
+    };
+    this.data.push(user);
+    return this.data;
   }
 }
 

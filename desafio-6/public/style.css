@@ -9,7 +9,8 @@ h1 {
 }
 
 form {
-  width: 500px;
+  max-width: 600px;
+  height: auto;
   background-color: darkslategray;
   padding: 2rem;
   margin: auto;
@@ -113,10 +114,12 @@ img {
 }
 
 h3 {
-  text-align: center;
-  padding: 2rem;
-  color: red;
-  font-weight: bold;
+  padding-bottom: 2rem;
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .backProct {
@@ -132,4 +135,12 @@ h3 {
   border: 3px solid rgb(24, 24, 24);
   background-color: rgb(233, 232, 156);
   padding: 0.5rem;
+}
+
+/* CHAT MESSAGE */
+.div-chat {
+  background-color: white;
+  color: black;
+  height: auto;
+  overflow: scroll;
 }
