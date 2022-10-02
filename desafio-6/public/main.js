@@ -55,7 +55,7 @@ socket.on("chat-message", (data) => {
   socket.on("disc", () => {
     document.getElementById(
       "chat"
-    ).innerHTML = `<span style="color: red"><b>User: ${user} disconnect</b></span>`;
+    ).innerHTML = `<p style="color: red"><b>User: ${user} disconnect</b></p>`;
   });
   document.getElementById(
     "chat"

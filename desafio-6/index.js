@@ -3,7 +3,7 @@ const { engine } = require("express-handlebars");
 const path = require("path");
 const Products = require("./model/data");
 const { formatMessage } = require("./utils/utils");
-const fs = require("fs");
+//const fs = require("fs");
 
 //Instanciamos nuestro servidor con socket
 const { Server: HttpServer } = require("http");
@@ -17,7 +17,7 @@ const io = new SocketServer(httpServer);
 //Instanciamos nuestra data
 const products = new Products();
 const { items } = products;
-const { data } = products;
+//const { data } = products;
 
 //Midllewaress
 app.use(express.json());
@@ -99,7 +99,6 @@ io.on("connection", (socket) => {
   });
 
   const id = socket.id;
-  console.log(id);
   socket.on("disconnect", () => {
     io.emit("disc", `${id}`);
     console.log(`disconect ${id}`);
