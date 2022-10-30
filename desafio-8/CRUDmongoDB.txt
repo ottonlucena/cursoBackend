@@ -1,0 +1,87 @@
+//Listar todos los documentos:
+
+ecommerce> db.mensajes.find().toArray()
+[{_id: ObjectId("635daae3e91d1bb1caf908b5"),email: 'otton@coder.com',text: 'HyperText Mackup Language',date: ISODate("2022-10-29T22:36:19.045Z")},
+{_id: ObjectId("635daae3e91d1bb1caf908b6"),email: 'otton@coder.com',text: 'Cascading Style Sheets',date: ISODate("2022-10-29T22:36:19.046Z")},
+{_id: ObjectId("635daae3e91d1bb1caf908b7"),email: 'otton@coder.com',text: 'JavaScript',date: ISODate("2022-10-29T22:36:19.046Z")},
+{_id: ObjectId("635daae3e91d1bb1caf908b8"),email: 'otton@coder.com',text: 'NodeJS',date: ISODate("2022-10-29T22:36:19.046Z")},
+{_id: ObjectId("635daae3e91d1bb1caf908b9"),email: 'otton@coder.com',text: 'MySQL',date: ISODate("2022-10-29T22:36:19.046Z")},
+{_id: ObjectId("635daae3e91d1bb1caf908ba"),email: 'otton@coder.com',text: 'MongoDB',date: ISODate("2022-10-29T22:36:19.046Z")},
+{_id: ObjectId("635daae3e91d1bb1caf908bb"),email: 'otton@coder.com',text: 'React',date: ISODate("2022-10-29T22:36:19.046Z")},
+{_id: ObjectId("635daae3e91d1bb1caf908bc"),email: 'otton@coder.com',text: 'Firebase',date: ISODate("2022-10-29T22:36:19.046Z")},
+{_id: ObjectId("635daae3e91d1bb1caf908bd"),email: 'otton@coder.com',text: 'CRUD',date: ISODate("2022-10-29T22:36:19.046Z")},
+{_id: ObjectId("635daae3e91d1bb1caf908be"),email: 'otton@coder.com',text: 'GIT',date: ISODate("2022-10-29T22:36:19.046Z")},
+{_id: ObjectId("635dab1de91d1bb1caf908bf"),email: 'otton@coderhouse.com',text: 'GITHUB',date: ISODate("2022-10-29T22:37:17.189Z")}]
+
+//Mostrar la cantidad de documentos almacenados:
+ecommerce> db.mensajes.countDocuments()
+11 
+
+
+//Listar todos los documentos:
+ecommerce> db.productos.find().toArray()
+[{_id: ObjectId("635da32de91d1bb1caf908a1"),title: 'git',price: 120,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da3d5e91d1bb1caf908a2"),title: 'gitHub',price: 380,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da3fbe91d1bb1caf908a3"),title: 'frontEnd',price: 660,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da40ae91d1bb1caf908a4"),title: 'backEnd',price: 940,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da41be91d1bb1caf908a5"),title: 'JavaScript',price: 1240,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da42ce91d1bb1caf908a6"),title: 'HTML',price: 1610,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da43ee91d1bb1caf908a7"),title: 'CSS',price: 1820,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da44de91d1bb1caf908a8"),title: 'React',price: 2420,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da471e91d1bb1caf908a9"),title: 'Terminal',price: 2960,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da4e6e91d1bb1caf908aa"),title: 'HyperText Markup Language',price: 3860,thumbnail: 'https://placeholder.com'}]
+
+//Mostrar la cantidad de documentos almacenados:
+ecommerce> db.productos.countDocuments()
+10
+
+//Agregar un producto sobre la colección de productos:
+ecommerce> db.productos.insertOne({title: "OttonLucena", price: 4840, thumbnail: "https://placeholder.com"})
+{acknowledged: true,insertedId: ObjectId("635dafe5e91d1bb1caf908c0")}    
+
+//Listar los productos con precio menor a 1000 pesos:
+ecommerce> db.productos.find({price: {$lt: 1000} })
+[{_id: ObjectId("635da32de91d1bb1caf908a1"),title: 'git',price: 120,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da3d5e91d1bb1caf908a2"),title: 'gitHub',price: 380,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da3fbe91d1bb1caf908a3"),title: 'frontEnd',price: 660,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da40ae91d1bb1caf908a4"),title: 'backEnd',price: 940,thumbnail: 'https://placeholder.com'}]
+
+//Listar los productos con precios entre los 1000 a 3000 pesos:
+ecommerce> db.productos.find( { price: {$gte: 1000, $lte: 3000}})
+[{_id: ObjectId("635da41be91d1bb1caf908a5"),title: 'JavaScript',price: 1240,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da42ce91d1bb1caf908a6"),title: 'HTML',price: 1610,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da43ee91d1bb1caf908a7"),title: 'CSS',price: 1820,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da44de91d1bb1caf908a8"),title: 'React',price: 2420,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635da471e91d1bb1caf908a9"),title: 'Terminal',price: 2960,thumbnail: 'https://placeholder.com'}]
+
+//Listar los productos con precio mayor a 3000 pesos:
+ecommerce> db.productos.find({price: {$gt:3000}})
+[{_id: ObjectId("635da4e6e91d1bb1caf908aa"),title: 'HyperText Markup Language',price: 3860,thumbnail: 'https://placeholder.com'},
+{_id: ObjectId("635dafe5e91d1bb1caf908c0"),title: 'OttonLucena',price: 4840,thumbnail: 'https://placeholder.com'}]
+
+//Realizar una consulta que traiga sólo el nombre del tercer producto más barato:
+ecommerce> db.productos.find().sort({price: 1}).limit(1).skip(2)
+[{_id: ObjectId("635da3fbe91d1bb1caf908a3"), title: 'frontEnd', price: 660, thumbnail: 'https://placeholder.com'}]  
+
+//Hacer una actualización sobre todos los productos, agregando el campo 'stock' a todos ellos con un valor de 100:
+ecommerce> db.productos.updateMany({}, {$set: {stock: 100}})
+{acknowledged: true,insertedId: null,matchedCount: 11,
+modifiedCount: 11, upsertedCount: 0}
+
+
+//Cambiar el stock a cero de los productos con precios mayores a 4000 pesos:
+ecommerce> db.productos.updateOne({price: {$gt:4000}}, {$set: {stock: 0}})
+{acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0} 
+
+//Borrar los productos con precio menor a 1000 pesos:
+ecommerce> db.productos.deleteMany({price: {$lt: 1000}})
+{ acknowledged: true, deletedCount: 4 }
+
+
+//Entrada con usuario:
+C:\Users\Otto>mongosh -u pepe -p "123456" 
+Current Mongosh Log ID: 635dfcbe7f6ce8c44547cafa 
+Connecting to: mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0 
+Using MongoDB: 6.0.2 
+Using Mongosh: 1.6.0
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
